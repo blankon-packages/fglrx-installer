@@ -1,0 +1,5 @@
+usr/lib/libfglrx_dm.so.1.0 usr/lib/libfglrx_dm.so.1
+usr/lib/fglrx/libGL.so.1.2 usr/lib/fglrx/libGL.so.1
+usr/lib/libAMDXvBA.so.1.0 usr/lib/libAMDXvBA.so.1
+usr/lib/libXvBAW.so.1.0 usr/lib/libXvBAW.so.1
+usr/bin/aticonfig usr/bin/amdconfig

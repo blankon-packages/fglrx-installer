@@ -1,0 +1,11 @@
+usr/lib/fglrx
+usr/lib/pxpress
+usr/lib/pxpress/xorg/modules
+usr/lib/pxpress/lib
+usr/share/fglrx
+lib/fglrx
+etc/ati
+usr/share/ati
+usr/lib/dri
+usr/lib/xorg/modules/drivers/
+/usr/share/applications/

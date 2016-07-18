@@ -1,0 +1,7 @@
+#PKGDATADIR#
+#PKGLIBCONFDIR#
+#COREDIR#
+#SYSCONFDIR#/OpenCL/vendors
+#DATADIR#/ati
+#LIBDIR#
+lib/udev/rules.d

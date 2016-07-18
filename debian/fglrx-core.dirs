@@ -1,0 +1,7 @@
+usr/share/fglrx
+lib/fglrx
+usr/lib/fglrx-core
+etc/OpenCL/vendors
+usr/share/ati
+usr/lib
+lib/udev/rules.d

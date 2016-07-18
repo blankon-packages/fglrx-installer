@@ -1,0 +1,40 @@
+fglrx-core: package-name-doesnt-match-sonames libOpenCL1 libatiuki1
+fglrx-core: hardening-no-relro usr/bin/atiodcli
+fglrx-core: hardening-no-relro usr/bin/clinfo
+fglrx-core: hardening-no-relro usr/lib/libOpenCL.so.1
+fglrx-core: hardening-no-relro usr/lib/libamdocl64.so
+fglrx-core: hardening-no-relro usr/lib/libatiadlxx.so
+fglrx-core: hardening-no-relro usr/lib/libaticalcl.so
+fglrx-core: hardening-no-relro usr/lib/libaticaldd.so
+fglrx-core: hardening-no-relro usr/lib/libaticalrt.so
+fglrx-core: hardening-no-relro usr/lib/libatiuki.so.1.0
+fglrx-core: hardening-no-relro usr/lib32/libOpenCL.so.1
+fglrx-core: hardening-no-relro usr/lib32/libamdocl32.so
+fglrx-core: hardening-no-relro usr/lib32/libatiadlxx.so
+fglrx-core: hardening-no-relro usr/lib32/libaticalcl.so
+fglrx-core: hardening-no-relro usr/lib32/libaticaldd.so
+fglrx-core: hardening-no-relro usr/lib32/libaticalrt.so
+fglrx-core: hardening-no-relro usr/lib32/libatiuki.so.1.0
+fglrx-core: unstripped-binary-or-object usr/src/fglrx-core-15.201/libfglrx_ip.a
+fglrx-core: unknown-section restricted/misc
+fglrx-core: non-multi-arch-lib-dir usr/lib32/
+fglrx-core: script-with-language-extension usr/sbin/atigetsysteminfo.sh
+fglrx-core: binary-without-manpage usr/sbin/atigetsysteminfo.sh
+fglrx-core: binary-without-manpage usr/bin/atiodcli
+fglrx-core: binary-without-manpage usr/bin/clinfo
+fglrx-core: possibly-insecure-handling-of-tmp-files-in-maintainer-script postinst:13
+fglrx-core: possible-bashism-in-maintainer-script postinst:78 '&>'
+fglrx-core: command-with-path-in-maintainer-script postinst:151 /usr/sbin/update-initramfs
+fglrx-core: command-with-path-in-maintainer-script postrm:37 /usr/sbin/update-initramfs
+fglrx-core: maintainer-script-ignores-errors prerm
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib/libamdocl64.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib/libatiadlxx.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib/libaticalcl.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib/libaticaldd.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib/libaticalrt.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib32/libamdocl32.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib32/libatiadlxx.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib32/libaticalcl.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib32/libaticaldd.so
+fglrx-core: sharedobject-in-library-directory-missing-soname usr/lib32/libaticalrt.so
+fglrx-core: prerm-calls-ldconfig

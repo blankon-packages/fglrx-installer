@@ -1,0 +1,5 @@
+fglrx-dev: debian-changelog-file-missing
+fglrx-dev: no-copyright-file
+fglrx-dev: unknown-section restricted/misc
+fglrx-dev: non-multi-arch-lib-dir usr/lib32/
+

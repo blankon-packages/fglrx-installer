@@ -1,0 +1,60 @@
+#!/bin/sh
+# Copyright (C) 2007 Mario Limonciello
+# Copyright (C) 2009-2011 Canonical Ltd.
+
+set -e
+
+PACKAGE_NAME=fglrx
+CVERSION=`dpkg-query -W -f='${Version}' $PACKAGE_NAME | awk -F "-" '{print $1}' | cut -d\: -f2`
+
+ARCH=`dpkg --print-architecture`
+
+if [ "$1" = "configure" ]; then
+
+    #check whether libglx.so got installed.  some releases earlier than x740
+    #will not actually have this libglx.so
+    if [ ! -f /usr/lib/xorg/modules/extensions/libglx.so ]; then
+        dpkg-divert --remove --rename --package xorg-driver-fglrx --divert /usr/lib/fglrx/libglx.so.xlibmesa /usr/lib/xorg/modules/extensions/libglx.so > /dev/null
+    fi
+
+    # Clean up any previous non-multi-arch alternatives
+    if [ -n "$(update-alternatives --list gl_conf 2>/dev/null)" ]; then
+        set -a $(update-alternatives --list gl_conf 2>/dev/null)
+        while [ $# -ge 1 ] && [ "$#" != "configure" ]; do
+            ALTERNATIVE=${1}
+            update-alternatives --remove gl_conf $ALTERNATIVE
+            shift
+        done
+    fi
+
+    update-alternatives --force \
+        --install /etc/ld.so.conf.d/x86_64-linux-gnu_GL.conf x86_64-linux-gnu_gl_conf /usr/lib/fglrx/ld.so.conf 1000 \
+        --slave /usr/share/applications/ubuntu-amdcccle.desktop x86_64-linux-gnu_amdcccle_desktop /usr/share/fglrx/amdcccle.desktop \
+        --slave /usr/share/applications/ubuntu-amdccclesu.desktop x86_64-linux-gnu_amdccclesu_desktop /usr/share/fglrx/amdccclesu.desktop \
+        --slave /usr/lib/xorg/modules/drivers/fglrx_drv.so x86_64-linux-gnu_fglrx_drv /usr/lib/fglrx/xorg/modules/drivers/fglrx_drv.so \
+        --slave /etc/X11/Xsession.d/10fglrx x86_64-linux-gnu_10fglrx /usr/lib/fglrx/10fglrx \
+        --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/fglrx/xorg \
+
+    # This is for switchable graphics
+    # Note: the radeon kernel module is still blacklisted
+    update-alternatives --force \
+        --install /etc/ld.so.conf.d/x86_64-linux-gnu_GL.conf x86_64-linux-gnu_gl_conf /usr/lib/pxpress/ld.so.conf 900 \
+        --slave /usr/share/applications/ubuntu-amdcccle.desktop x86_64-linux-gnu_amdcccle_desktop /usr/share/fglrx/amdcccle.desktop \
+        --slave /usr/share/applications/ubuntu-amdccclesu.desktop x86_64-linux-gnu_amdccclesu_desktop /usr/share/fglrx/amdccclesu.desktop \
+        --slave /usr/lib/xorg/modules/drivers/fglrx_drv.so x86_64-linux-gnu_fglrx_drv /usr/lib/fglrx/xorg/modules/drivers/fglrx_drv.so \
+        --slave /etc/X11/Xsession.d/10fglrx x86_64-linux-gnu_10fglrx /usr/lib/fglrx/10fglrx \
+        --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/pxpress/xorg \
+
+    # Install just the ld.so.conf.d alternatives for the secondary architecture.
+    # We need only to ensure that any mesa ld.so.conf.d alternative isn't active.
+    update-alternatives --force \
+        --install /etc/ld.so.conf.d/i386-linux-gnu_GL.conf i386-linux-gnu_gl_conf /usr/lib/fglrx/alt_ld.so.conf 1000
+    update-alternatives --force \
+        --install /etc/ld.so.conf.d/i386-linux-gnu_GL.conf i386-linux-gnu_gl_conf /usr/lib/pxpress/alt_ld.so.conf 900
+
+    # ldconfig needs to be run immediately as we're changing /etc/ld.so.conf.d/ with
+    # alternatives.
+    LDCONFIG_NOTRIGGER=y ldconfig
+fi
+
+#DEBHELPER#

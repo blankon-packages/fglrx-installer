@@ -1,0 +1,30 @@
+From ef1d23b8234164c273faf4c709b58dae2ce5593b Mon Sep 17 00:00:00 2001
+From: Alberto Milone <alberto.milone@canonical.com>
+Date: Thu, 17 Sep 2015 15:44:59 +0200
+Subject: [PATCH 2/5] Add support for Linux 4.1
+
+---
+ firegl_public.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/firegl_public.c b/firegl_public.c
+index 6017e89..94778f1 100755
+--- a/firegl_public.c
++++ b/firegl_public.c
+@@ -3508,10 +3508,12 @@ int ATI_API_CALL KCL_InstallInterruptHandler(
+         KCL_PUB_InterruptHandlerWrap,
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,22)
+         ((useMSI) ? (SA_INTERRUPT) : (SA_SHIRQ)),
+-#else
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(4,1,0)
+         //when MSI enabled. keep irq disabled when calling the action handler,
+         //exclude this IRQ from irq balancing (only on one CPU) 
+         ((useMSI) ? (IRQF_DISABLED) : (IRQF_SHARED)),    
++#else
++        ((useMSI) ? (0x0) : (IRQF_SHARED)),
+ #endif
+         dev_name,
+         context);
+-- 
+1.9.1
+

@@ -1,0 +1,11 @@
+#PKGLIBDIR#
+#PXDIR#
+#PXXMODDIR#
+#PXLIBDIR#
+#PKGDATADIR#
+#PKGLIBCONFDIR#
+#SYSCONFDIR#/ati
+#DATADIR#/ati
+#LIBDIR#/dri
+#LIBDIR#/xorg/modules/drivers/
+/usr/share/applications/
