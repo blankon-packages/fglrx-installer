@@ -33,7 +33,7 @@ if [ "$1" = "configure" ]; then
         --slave /usr/share/applications/ubuntu-amdccclesu.desktop x86_64-linux-gnu_amdccclesu_desktop /usr/share/fglrx/amdccclesu.desktop \
         --slave /usr/lib/xorg/modules/drivers/fglrx_drv.so x86_64-linux-gnu_fglrx_drv /usr/lib/fglrx/xorg/modules/drivers/fglrx_drv.so \
         --slave /etc/X11/Xsession.d/10fglrx x86_64-linux-gnu_10fglrx /usr/lib/fglrx/10fglrx \
-        --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/fglrx/xorg \
+      #  --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/fglrx/xorg \
 
     # This is for switchable graphics
     # Note: the radeon kernel module is still blacklisted
@@ -43,7 +43,7 @@ if [ "$1" = "configure" ]; then
         --slave /usr/share/applications/ubuntu-amdccclesu.desktop x86_64-linux-gnu_amdccclesu_desktop /usr/share/fglrx/amdccclesu.desktop \
         --slave /usr/lib/xorg/modules/drivers/fglrx_drv.so x86_64-linux-gnu_fglrx_drv /usr/lib/fglrx/xorg/modules/drivers/fglrx_drv.so \
         --slave /etc/X11/Xsession.d/10fglrx x86_64-linux-gnu_10fglrx /usr/lib/fglrx/10fglrx \
-        --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/pxpress/xorg \
+       # --slave /usr/lib/x86_64-linux-gnu/xorg/extra-modules x86_64-linux-gnu_xorg_extra_modules /usr/lib/pxpress/xorg \
 
     # Install just the ld.so.conf.d alternatives for the secondary architecture.
     # We need only to ensure that any mesa ld.so.conf.d alternative isn't active.

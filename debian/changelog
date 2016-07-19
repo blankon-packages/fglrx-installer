@@ -1,3 +1,10 @@
+fglrx-installer (2:15.201-0ubuntu2~15.10.2blankon4) tambora; urgency=medium
+
+  * Enable Recommends.
+  * postinst: disable install module
+
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 19 Jul 2016 07:17:30 +0700
+
 fglrx-installer (2:15.201-0ubuntu2~15.10.2blankon3) tambora; urgency=medium
 
   * Disable recommends
